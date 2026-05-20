@@ -44,7 +44,8 @@ def _split_participants(side: str) -> list[str]:
         # Skip bare team labels (no second capitalized word pattern)
         if not part:
             continue
-        if " " not in part and len(part) < 12:
+        if names and " " not in part and len(part) < 12:
+            # Only skip bare short single-word team labels when members were already extracted
             continue
         if re.match(r"^(Los|The)\s", part) and part.count(" ") <= 2:
             continue

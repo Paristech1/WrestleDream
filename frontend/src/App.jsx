@@ -117,14 +117,6 @@ const WrestlerCard = ({
           }}
         />
         <div className="card-filter" />
-        <div className="card-status">
-          <div className={`status-dot ${isLoser ? 'loser-dot' : 'online'}`} />
-          <div className="status-text">{isLoser ? 'ELIMINATED' : 'ACTIVE'}</div>
-        </div>
-        <div className="game-score-badge">
-          <span className="gs-label">MATCH SCORE</span>
-          <span className="gs-value">{matchScore}</span>
-        </div>
         <div className="card-content">
           <div className="card-name-wrap">
             <div className="card-name">{wrestler.WRESTLER_NAME}</div>

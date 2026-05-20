@@ -2,9 +2,11 @@
 
 from __future__ import annotations
 
+import json
 import re
 import threading
 import time
+from pathlib import Path
 from typing import Optional
 
 import requests
@@ -19,6 +21,19 @@ WIKIPEDIA_SUMMARY = "https://en.wikipedia.org/api/rest_v1/page/summary/"
 WIKIPEDIA_API = "https://en.wikipedia.org/w/api.php"
 
 PORTRAIT_HINTS = ("portrait", "headshot", "head shot", "mugshot", "profile", "posed", "studio")
+
+_OVERRIDES_PATH = Path(__file__).resolve().parent.parent / "data" / "image_overrides.json"
+
+
+def _load_overrides() -> dict[str, str]:
+    if not _OVERRIDES_PATH.exists():
+        return {}
+    with open(_OVERRIDES_PATH, encoding="utf-8") as f:
+        data = json.load(f)
+    return {k.lower(): v for k, v in data.get("overrides", {}).items()}
+
+
+_IMAGE_OVERRIDES: dict[str, str] = _load_overrides()
 
 _image_cache: dict[str, tuple[Optional[str], float]] = {}
 _image_lock = threading.Lock()
@@ -233,6 +248,11 @@ def get_wrestler_image(name: str, promotion: str = "") -> Optional[str]:
     cached = _cache_get(cache_key)
     if cached is not _MISSING:
         return cached  # type: ignore[return-value]
+
+    override = _IMAGE_OVERRIDES.get(name.lower())
+    if override:
+        _cache_set(cache_key, override)
+        return override
 
     for resolver in (_thesportsdb_image, _wikipedia_thumbnail, _wikidata_image):
         url = resolver(name)

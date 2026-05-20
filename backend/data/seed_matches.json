@@ -11,6 +11,28 @@
       "source": "https://www.thesportsdb.com/event/2462430",
       "strDescriptionEN": "Street Fight\r\nFinn Balor vs. JD McDonagh\r\n\r\nSix Man Tornado Tag Team Match\r\nLos Americanos Hermanos (Bruto Creedo & Julio Creedo) & The Original El Grande Americano vs. Los Americanos (Bravo Americano, El Grande Americano & Rayo Americano)\r\n\r\nWWE Women's Tag Team Title Match\r\nBrie Bella & Paige (c) vs. The Judgment Day (Raquel Rodriguez & Roxanne Perez) (w/Liv Morgan)\r\n\r\nSingles Match\r\nSeth Rollins vs. Austin Theory (w/Logan Paul)",
       "strResult": "Street Fight\r\nFinn Balor defeats JD McDonagh (14:15)\r\n\r\nSix Man Tornado Tag Team Match\r\nLos Americanos (Bravo Americano, El Grande Americano & Rayo Americano) defeat Los Americanos Hermanos (Bruto Creedo & Julio Creedo) & The Original El Grande Americano (10:45)\r\n\r\nWWE Women's Tag Team Title Match\r\nBrie Bella & Paige (c) defeat The Judgment Day (Raquel Rodriguez & Roxanne Perez) (w/Liv Morgan) (10:15)\r\n\r\nSingles Match\r\nSeth Rollins defeats Austin Theory (w/Logan Paul) (12:55)"
+    },
+    {
+      "idEvent": "seed-nxt-20260519",
+      "strEvent": "NXT #450",
+      "strLeague": "WWE",
+      "dateEvent": "2026-05-20",
+      "dateEventLocal": "2026-05-19",
+      "promotion": "WWE",
+      "source": "https://www.fightful.com/wrestling/wwe-nxt-results-5-19-2026-tatum-paxley-vs-lizzy-rain-keanu-carver-mason-rook-more/",
+      "strDescriptionEN": "Tag Team Match\r\nMason Rook & Kam Hendrix vs. Myles Borne & Tony D'Angelo\r\n\r\nSingles Match\r\nTristan Angels vs. Romeo Moreno\r\n\r\nNXT Women's North American Championship Title Match\r\nTatum Paxley (c) vs. Lizzy Rain\r\n\r\nSingles Match\r\nKeanu Carver vs. Tate Wilder\r\n\r\nNXT Tag Team Championship Title Match\r\nBrad Baylor & Ricky Smokes (c) vs. DarkState (Saquon Shugars & Dion Lennox)",
+      "strResult": "Tag Team Match\r\nMason Rook & Kam Hendrix defeat Myles Borne & Tony D'Angelo\r\n\r\nSingles Match\r\nTristan Angels defeats Romeo Moreno (w/Noam Dar)\r\n\r\nNXT Women's North American Championship Title Match\r\nTatum Paxley (c) defeats Lizzy Rain\r\n\r\nSingles Match\r\nKeanu Carver defeats Tate Wilder\r\n\r\nNXT Tag Team Championship Title Match\r\nBrad Baylor & Ricky Smokes (c) defeat DarkState (Saquon Shugars & Dion Lennox)"
+    },
+    {
+      "idEvent": "seed-nxt-20260512",
+      "strEvent": "NXT #449",
+      "strLeague": "WWE",
+      "dateEvent": "2026-05-13",
+      "dateEventLocal": "2026-05-12",
+      "promotion": "WWE",
+      "source": "https://www.pwmania.com/wwe-nxt-results-may-12-2026",
+      "strDescriptionEN": "Tag Team Match\r\nTatum Paxley & Lizzy Rain vs. Zaria & Nikkita Lyons\r\n\r\nSingles Match\r\nNARAKU vs. Lince Dorado\r\n\r\nSix-Man Tag Team Match\r\nThe Birthright (Charlie Dempsey, Stacks & Connors) vs. Sean Legacy, EK Prosper & Tate Wilder\r\n\r\nSingles Match\r\nJackson Drake vs. Noam Dar\r\n\r\nSingles Match\r\nKelani Jordan vs. Kendal Grey",
+      "strResult": "Tag Team Match\r\nTatum Paxley & Lizzy Rain defeat Zaria & Nikkita Lyons\r\n\r\nSingles Match\r\nNARAKU defeats Lince Dorado\r\n\r\nSix-Man Tag Team Match\r\nThe Birthright (Charlie Dempsey, Stacks & Connors) defeat (Sean Legacy, EK Prosper & Tate Wilder)\r\n\r\nSingles Match\r\nJackson Drake defeats Noam Dar (w/Myka Lockwood)\r\n\r\nSingles Match\r\nKelani Jordan defeats Kendal Grey"
     }
   ]
 }

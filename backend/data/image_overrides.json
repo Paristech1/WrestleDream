@@ -1,0 +1,8 @@
+{
+  "_comment": "Manual image overrides for wrestlers not found via TheSportsDB, Wikipedia, or Wikidata. Keys are lowercase wrestler names.",
+  "overrides": {
+    "keanu carver": "https://www.wwe.com/f/styles/talent_champion_lg/public/2026/02/Keanu_Carver_12042025MM_20156_Profile.png",
+    "saquon shugars": "https://www.wwe.com/f/styles/talent_champion_lg/public/all/2025/04/Saquon-Shugars_03182025MP_0042_Profile--d4690787c0d7db157dcc8f564372eb41.png",
+    "stacks": "https://www.wwe.com/f/styles/talent_champion_lg/public/all/2024/05/Channing-Stacks-Lorenzo-%26-Tony_11142023AK_00865_PROFILE--5adcc2ffec1e93bc730d7529b184d776.png"
+  }
+}
