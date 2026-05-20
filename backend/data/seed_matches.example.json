@@ -1,0 +1,14 @@
+{
+  "_comment": "Copy to seed_matches.json after verifying each card at Cagematch. Required fields: strEvent, strLeague, dateEventLocal, strDescriptionEN, strResult, source (URL).",
+  "events": [
+    {
+      "idEvent": "cagematch-example",
+      "strEvent": "AEW Dynamite",
+      "strLeague": "AEW",
+      "dateEventLocal": "2026-05-14",
+      "source": "https://www.cagematch.net/?id=1&nr=EVENT_ID",
+      "strDescriptionEN": "Singles Match\r\nWrestler A vs. Wrestler B",
+      "strResult": "Singles Match\r\nWrestler A defeats Wrestler B (12:00)"
+    }
+  ]
+}

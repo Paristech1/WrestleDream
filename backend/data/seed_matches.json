@@ -1,0 +1,16 @@
+{
+  "_comment": "Confirmed results only. Entries must match an authoritative source (TheSportsDB event ID, Cagematch URL in source field). Do not add invented results.",
+  "events": [
+    {
+      "idEvent": "2462430",
+      "strEvent": "RAW #1721",
+      "strLeague": "WWE",
+      "dateEvent": "2026-05-19",
+      "dateEventLocal": "2026-05-18",
+      "promotion": "WWE",
+      "source": "https://www.thesportsdb.com/event/2462430",
+      "strDescriptionEN": "Street Fight\r\nFinn Balor vs. JD McDonagh\r\n\r\nSix Man Tornado Tag Team Match\r\nLos Americanos Hermanos (Bruto Creedo & Julio Creedo) & The Original El Grande Americano vs. Los Americanos (Bravo Americano, El Grande Americano & Rayo Americano)\r\n\r\nWWE Women's Tag Team Title Match\r\nBrie Bella & Paige (c) vs. The Judgment Day (Raquel Rodriguez & Roxanne Perez) (w/Liv Morgan)\r\n\r\nSingles Match\r\nSeth Rollins vs. Austin Theory (w/Logan Paul)",
+      "strResult": "Street Fight\r\nFinn Balor defeats JD McDonagh (14:15)\r\n\r\nSix Man Tornado Tag Team Match\r\nLos Americanos (Bravo Americano, El Grande Americano & Rayo Americano) defeat Los Americanos Hermanos (Bruto Creedo & Julio Creedo) & The Original El Grande Americano (10:45)\r\n\r\nWWE Women's Tag Team Title Match\r\nBrie Bella & Paige (c) defeat The Judgment Day (Raquel Rodriguez & Roxanne Perez) (w/Liv Morgan) (10:15)\r\n\r\nSingles Match\r\nSeth Rollins defeats Austin Theory (w/Logan Paul) (12:55)"
+    }
+  ]
+}
