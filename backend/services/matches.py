@@ -51,11 +51,9 @@ def _get_json(path: str, params: dict | None = None) -> dict:
     return r.json()
 
 
-def previous_monday(ref: date) -> date:
-    """Most recent Monday strictly before ref (if ref is Monday, use prior week)."""
-    if ref.weekday() == 0:
-        return ref - timedelta(days=7)
-    return ref - timedelta(days=ref.weekday())
+def get_default_cutoff(ref: date) -> date:
+    """Default cutoff date: strictly before ref (ref - 1 day) to include all completed shows of the week."""
+    return ref - timedelta(days=1)
 
 
 def _event_date(ev: dict) -> date:
@@ -112,11 +110,11 @@ def fetch_matches(
 ) -> list[dict[str, Any]]:
     """
     Return match-level records with wrestler appearances.
-    Only includes events with date <= before_date (default: previous Monday vs reference).
+    Only includes events with date <= before_date (default: strictly before reference_date).
     """
     promo_keys = normalize_promotion_keys(promotions)
     ref = reference_date or date.today()
-    cutoff = before_date or previous_monday(ref)
+    cutoff = before_date or get_default_cutoff(ref)
 
     events: list[dict] = []
 

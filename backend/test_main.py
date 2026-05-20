@@ -5,14 +5,16 @@ from datetime import date
 from promotions import event_matches_promotion, normalize_promotion_keys
 from scoring import compute_match_score, parse_length_minutes
 from parsers.result_parser import parse_event_results
-from services.matches import fetch_matches, previous_monday, fetch_wrestlers_from_matches
+from services.matches import fetch_matches, get_default_cutoff, fetch_wrestlers_from_matches
 
 
-def test_previous_monday():
-    # Wednesday May 20 2026 → previous Monday May 18
-    assert previous_monday(date(2026, 5, 20)) == date(2026, 5, 18)
-    # Monday May 18 → prior Monday May 11
-    assert previous_monday(date(2026, 5, 18)) == date(2026, 5, 11)
+def test_get_default_cutoff():
+    # Wednesday May 20 2026 → Tuesday May 19
+    assert get_default_cutoff(date(2026, 5, 20)) == date(2026, 5, 19)
+    # Monday May 18 2026 → Sunday May 17
+    assert get_default_cutoff(date(2026, 5, 18)) == date(2026, 5, 17)
+    # Sunday May 24 2026 → Saturday May 23
+    assert get_default_cutoff(date(2026, 5, 24)) == date(2026, 5, 23)
 
 
 def test_parse_raw_1721():

@@ -23,6 +23,40 @@ const ALL_PROMOS = ['WWE', 'RAW', 'SMACKDOWN', 'NXT', 'AEW', 'TNA'];
 const PLACEHOLDER_SVG =
   "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 500' fill='%23333'%3E%3Crect width='400' height='500' fill='%231a1a1a'/%3E%3Ccircle cx='200' cy='160' r='70' fill='%23444'/%3E%3Cellipse cx='200' cy='380' rx='90' ry='70' fill='%23444'/%3E%3C/svg%3E";
 
+const Logo = ({ onClick, className = '' }) => {
+  const buttonProps = onClick
+    ? { onClick, className: `logo-btn pointer ${className}` }
+    : { className: `logo-btn ${className}`, style: { cursor: 'default' } };
+
+  return (
+    <button type="button" {...buttonProps}>
+      <svg className="logo-emblem" viewBox="0 0 100 100" width="48" height="48">
+        <defs>
+          <linearGradient id="logo-gold" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="#ffe066" />
+            <stop offset="50%" stopColor="#f59e0b" />
+            <stop offset="100%" stopColor="#92400e" />
+          </linearGradient>
+          <linearGradient id="logo-red" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="#f43f5e" />
+            <stop offset="100%" stopColor="#e11d48" />
+          </linearGradient>
+        </defs>
+        <circle cx="50" cy="50" r="44" fill="none" stroke="url(#logo-gold)" strokeWidth="1" opacity="0.3" />
+        <polygon points="50,10 85,25 85,75 50,90 15,75 15,25" fill="#111" stroke="url(#logo-gold)" strokeWidth="2.5" />
+        <circle cx="50" cy="50" r="28" fill="none" stroke="url(#logo-gold)" strokeWidth="1" strokeDasharray="3 2" />
+        <path d="M 32 42 L 68 42 M 30 50 L 70 50 M 32 58 L 68 58" stroke="url(#logo-gold)" strokeWidth="1.2" opacity="0.6" />
+        <line x1="32" y1="38" x2="32" y2="62" stroke="url(#logo-gold)" strokeWidth="1.5" opacity="0.5" />
+        <line x1="68" y1="38" x2="68" y2="62" stroke="url(#logo-gold)" strokeWidth="1.5" opacity="0.5" />
+        <polygon points="50,33 53,42 62,42 55,48 57,57 50,52 43,57 45,48 38,42 47,42" fill="url(#logo-red)" />
+      </svg>
+      <span className="logo-text-wrap">
+        WRESTLE<span className="logo-accent">DREAM</span>
+      </span>
+    </button>
+  );
+};
+
 function saveToStorage(state) {
   try {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
@@ -96,23 +130,24 @@ const WrestlerCard = ({
             <div className="card-name">{wrestler.WRESTLER_NAME}</div>
             <MdVerified className="card-verification" color="#e11d48" size={20} />
           </div>
-          <div className="card-team">{promotionLabel(wrestler)}</div>
+          <div className="card-team">
+            <span>{promotionLabel(wrestler)}</span>
+            {wrestler.MATCH_TYPE && (
+              <span className="match-type-badge">{wrestler.MATCH_TYPE}</span>
+            )}
+          </div>
           <div className="card-stats">
-            <div className={`stat-pill ${wrestler.WON ? 'stat-green' : ''}`}>
+            <div className={`stat-pill ${wrestler.WON ? 'stat-green' : 'stat-red'}`}>
               <span className="stat-label">RESULT</span>
               <span className="stat-value">{wrestler.WON ? 'WIN' : 'LOSS'}</span>
             </div>
             <div className="stat-pill">
               <span className="stat-label">STARS</span>
-              <span className="stat-value">{wrestler.STAR_RATING ?? '—'}</span>
+              <span className="stat-value">{wrestler.STAR_RATING != null ? `${wrestler.STAR_RATING}★` : '—'}</span>
             </div>
             <div className="stat-pill">
               <span className="stat-label">TIME</span>
               <span className="stat-value">{wrestler.MATCH_LENGTH || '—'}</span>
-            </div>
-            <div className="stat-pill">
-              <span className="stat-label">TYPE</span>
-              <span className="stat-value">{(wrestler.MATCH_TYPE || '').slice(0, 12)}</span>
             </div>
           </div>
           {!isSimple && (
@@ -128,32 +163,37 @@ const WrestlerCard = ({
               <span>{showFullStats ? 'Hide Details' : 'Match Details'}</span>
             </button>
           )}
-          {showFullStats && !isSimple && (
-            <motion.div
-              className="full-stats"
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: 'auto', opacity: 1 }}
-            >
-              <div className="full-stats-grid">
-                <div className="fs-item">
-                  <span className="fs-label">Event</span>
-                  <span className="fs-val">{wrestler.EVENT_NAME}</span>
+          <AnimatePresence>
+            {showFullStats && !isSimple && (
+              <motion.div
+                className="full-stats"
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: 'auto', opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+                style={{ overflow: 'hidden' }}
+              >
+                <div className="full-stats-grid">
+                  <div className="fs-item">
+                    <span className="fs-label">Event</span>
+                    <span className="fs-val">{wrestler.EVENT_NAME}</span>
+                  </div>
+                  <div className="fs-item">
+                    <span className="fs-label">Date</span>
+                    <span className="fs-val">{wrestler.EVENT_DATE}</span>
+                  </div>
+                  <div className="fs-item">
+                    <span className="fs-label">Opponent</span>
+                    <span className="fs-val">{wrestler.OPPONENT}</span>
+                  </div>
+                  <div className="fs-item">
+                    <span className="fs-label">Method</span>
+                    <span className="fs-val">{wrestler.WIN_METHOD || '—'}</span>
+                  </div>
                 </div>
-                <div className="fs-item">
-                  <span className="fs-label">Date</span>
-                  <span className="fs-val">{wrestler.EVENT_DATE}</span>
-                </div>
-                <div className="fs-item">
-                  <span className="fs-label">Opponent</span>
-                  <span className="fs-val">{wrestler.OPPONENT}</span>
-                </div>
-                <div className="fs-item">
-                  <span className="fs-label">Method</span>
-                  <span className="fs-val">{wrestler.WIN_METHOD || '—'}</span>
-                </div>
-              </div>
-            </motion.div>
-          )}
+              </motion.div>
+            )}
+          </AnimatePresence>
           {!isWinner && !isLoser && !isSimple && (
             <div className="card-button">
               <div className="btn-text">Pick Winner</div>
@@ -352,12 +392,12 @@ function App() {
           </button>
         ))}
       </div>
-      <button type="button" className="hub-btn hub-btn-secondary filter-apply" onClick={loadDeck}>
+      <button type="button" className="hub-btn hub-btn-primary filter-apply" onClick={loadDeck}>
         Load deck
       </button>
       {cutoffInfo?.cutoff && (
         <p className="cutoff-hint">
-          Matches on or before {cutoffInfo.cutoff} (previous Monday)
+          Matches on or before {cutoffInfo.cutoff} (completed shows)
         </p>
       )}
     </div>
@@ -367,9 +407,7 @@ function App() {
     return (
       <div className="container">
         <header className="header">
-          <button type="button" className="logo-text logo-home-trigger">
-            WRESTLE<span className="logo-accent">DREAM</span>
-          </button>
+          <Logo onClick={() => setScreen('home')} className="logo-home-trigger" />
           <div className="subtitle">Loading this week&apos;s performers...</div>
         </header>
         {filtersBar}
@@ -390,9 +428,7 @@ function App() {
     return (
       <div className="container">
         <header className="header">
-          <button type="button" className="logo-text">
-            WRESTLE<span className="logo-accent">DREAM</span>
-          </button>
+          <Logo onClick={() => setScreen('home')} />
         </header>
         {filtersBar}
         <div className="error-card">
@@ -431,18 +467,34 @@ function App() {
                 <FaHistory size={14} />
                 {matchLogExpanded ? 'Hide path' : 'Show path to victory'}
               </button>
-              {matchLogExpanded && (
-                <div className="match-log">
-                  {matchLog.map((m, i) => (
-                    <div key={i} className="log-entry">
-                      <span className="log-winner">{m.winner}</span>
-                      <span className="log-score">{m.winnerScore}</span>
-                      <span className="log-vs">beat</span>
-                      <span className="log-loser">{m.loser}</span>
+              <AnimatePresence>
+                {matchLogExpanded && (
+                  <motion.div
+                    className="match-log"
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: 'auto', opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+                    style={{ overflow: 'hidden' }}
+                  >
+                    <div className="log-title">
+                      <FaHistory size={12} opacity={0.6} /> Path to Victory
                     </div>
-                  ))}
-                </div>
-              )}
+                    <div className="log-chain">
+                      {matchLog.map((m, i) => (
+                        <div key={i} className="log-entry">
+                          <span className="log-index">#{i + 1}</span>
+                          <span className="log-winner">{m.winner}</span>
+                          <span className="log-score">{m.winnerScore}</span>
+                          <span className="log-vs">beat</span>
+                          <span className="log-loser">{m.loser}</span>
+                          <span className="log-score dim">{m.loserScore}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
           )}
           <button type="button" className="share-btn twitter" onClick={() => {
@@ -465,9 +517,7 @@ function App() {
     return (
       <div className="container">
         <header className="header">
-          <button type="button" className="logo-text">
-            WRESTLE<span className="logo-accent">DREAM</span>
-          </button>
+          <Logo onClick={() => setScreen('home')} />
         </header>
         {filtersBar}
         <button type="button" className="reset-btn" onClick={loadDeck}>
@@ -489,9 +539,7 @@ function App() {
             exit={{ opacity: 0, y: -40 }}
           >
             <header className="header">
-              <button type="button" className="logo-text" onClick={() => setScreen('home')}>
-                WRESTLE<span className="logo-accent">DREAM</span>
-              </button>
+              <Logo onClick={() => setScreen('home')} />
             </header>
             <p className="home-hub-copy">
               Pick who had the better week — real matches, real results. Last wrestler standing wins.
@@ -511,9 +559,7 @@ function App() {
         {screen === 'game' && (
           <motion.section key="game" className="screen-panel" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
             <header className="header">
-              <button type="button" className="logo-text" onClick={() => setScreen('home')}>
-                WRESTLE<span className="logo-accent">DREAM</span>
-              </button>
+              <Logo onClick={() => setScreen('home')} />
               <div className="subtitle">Who had the better performance?</div>
             </header>
             {filtersBar}
@@ -522,6 +568,7 @@ function App() {
                 <div className="score-label">In deck</div>
                 <div className="score-value">{deck.length}</div>
               </div>
+              <div className="scoreboard-divider" />
               <div className="score-item">
                 <div className="score-label">Bouts</div>
                 <div className="score-value">{matchLog.length}</div>
@@ -561,9 +608,7 @@ function App() {
         {screen === 'leaders' && (
           <motion.section key="leaders" className="screen-panel" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
             <header className="header">
-              <button type="button" className="logo-text" onClick={() => setScreen('home')}>
-                WRESTLE<span className="logo-accent">DREAM</span>
-              </button>
+              <Logo onClick={() => setScreen('home')} />
               <div className="subtitle">Top Match Scores this deck</div>
             </header>
             <div className="leaders-flow">

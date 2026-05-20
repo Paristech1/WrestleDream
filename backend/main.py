@@ -18,7 +18,7 @@ from services.images import attach_images
 from services.matches import (
     fetch_matches,
     fetch_wrestlers_from_matches,
-    previous_monday,
+    get_default_cutoff,
 )
 
 CACHE_TTL_SECONDS = int(os.environ.get("CACHE_TTL_SECONDS", "1800"))
@@ -112,7 +112,7 @@ def daily_deck(
                 "cutoff_date": None,
             }
 
-    cutoff = previous_monday(ref)
+    cutoff = get_default_cutoff(ref)
     promo_list = (
         [p.strip() for p in promotions.split(",") if p.strip()]
         if promotions
