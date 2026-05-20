@@ -1,5 +1,5 @@
 {
-  "_comment": "Manual image overrides for wrestlers not found via TheSportsDB, Wikipedia, or Wikidata. Keys are lowercase wrestler names.",
+  "_comment": "Manual image overrides — checked before TheSportsDB/Wikipedia/Wikidata. Keys are lowercase wrestler names. Use WWE.com talent_champion_lg style URLs.",
   "overrides": {
     "keanu carver": "https://www.wwe.com/f/styles/talent_champion_lg/public/2026/02/Keanu_Carver_12042025MM_20156_Profile.png",
     "saquon shugars": "https://www.wwe.com/f/styles/talent_champion_lg/public/all/2025/04/Saquon-Shugars_03182025MP_0042_Profile--d4690787c0d7db157dcc8f564372eb41.png",
@@ -8,6 +8,18 @@
     "lizzy rain": "https://www.wwe.com/f/styles/talent_champion_lg/public/2026/05/Lizzy-Rain_04142026CK_0421_Profile.png",
     "connors": "https://www.wwe.com/f/styles/talent_champion_lg/public/2026/04/uriah_PROFILE.png",
     "el grande americano": "https://www.wwe.com/f/styles/talent_champion_lg/public/2025/09/El_Grande_Profile.png",
-    "the original el grande americano": "https://www.wwe.com/f/styles/talent_champion_lg/public/2026/02/Gable_01262026MM_20710_Profile.png"
+    "the original el grande americano": "https://www.wwe.com/f/styles/talent_champion_lg/public/2026/02/Gable_01262026MM_20710_Profile.png",
+    "seth rollins": "https://www.wwe.com/f/styles/talent_champion_lg/public/2026/05/SETH_ROLLINS_04132026sb_0095_Profile.png",
+    "raquel rodriguez": "https://www.wwe.com/f/styles/talent_champion_lg/public/2025/08/Raquelle_Rodriguez_PROFILE.png",
+    "zaria": "https://www.wwe.com/f/styles/talent_champion_lg/public/2026/05/Zaria_02102026MP_1038_Profile.png",
+    "dion lennox": "https://www.wwe.com/f/styles/talent_champion_lg/public/2025/12/Dion-Lennox_03182025MP_0010_Profile.png",
+    "ek prosper": "https://www.wwe.com/f/styles/talent_champion_lg/public/2026/02/Eli-Knight_12172025MP_0068_Profile.png",
+    "kendal grey": "https://www.wwe.com/f/styles/talent_champion_lg/public/2026/03/Kendal_Grey_PROFILE.png",
+    "sean legacy": "https://www.wwe.com/f/styles/talent_champion_lg/public/2026/01/Sean_Legacy_profile.png",
+    "naraku": "https://www.wwe.com/f/styles/talent_champion_lg/public/2026/05/Evil_PROFILE.png",
+    "bravo americano": "https://www.wwe.com/f/styles/talent_champion_lg/public/2026/02/Los_Americanos_PROFILE.png",
+    "rayo americano": "https://www.wwe.com/f/styles/talent_champion_lg/public/2025/10/rayo_profile.png",
+    "bruto creedo": "https://www.wwe.com/f/styles/talent_champion_lg/public/2026/02/Brutus_01052026rf_107_Profile.png",
+    "julio creedo": "https://www.wwe.com/f/styles/talent_champion_lg/public/all/2025/06/AmericanMade_05192025rf_20250625-update--8de235c7b84117aae10c152bf248cd6d.png"
   }
 }

@@ -34,6 +34,19 @@ def _load_overrides() -> dict[str, str]:
 
 
 _IMAGE_OVERRIDES: dict[str, str] = _load_overrides()
+_overrides_mtime: float = _OVERRIDES_PATH.stat().st_mtime if _OVERRIDES_PATH.exists() else 0.0
+
+
+def _get_overrides() -> dict[str, str]:
+    global _IMAGE_OVERRIDES, _overrides_mtime
+    try:
+        mtime = _OVERRIDES_PATH.stat().st_mtime
+        if mtime != _overrides_mtime:
+            _IMAGE_OVERRIDES = _load_overrides()
+            _overrides_mtime = mtime
+    except OSError:
+        pass
+    return _IMAGE_OVERRIDES
 
 _image_cache: dict[str, tuple[Optional[str], float]] = {}
 _image_lock = threading.Lock()
@@ -244,15 +257,14 @@ def get_wrestler_image(name: str, promotion: str = "") -> Optional[str]:
     3. Wikidata P18 → Wikimedia Commons (portrait filenames preferred)
     4. None (frontend neutral placeholder)
     """
+    override = _get_overrides().get(name.lower())
+    if override:
+        return override
+
     cache_key = f"{name}|{promotion}".lower()
     cached = _cache_get(cache_key)
     if cached is not _MISSING:
         return cached  # type: ignore[return-value]
-
-    override = _IMAGE_OVERRIDES.get(name.lower())
-    if override:
-        _cache_set(cache_key, override)
-        return override
 
     for resolver in (_thesportsdb_image, _wikipedia_thumbnail, _wikidata_image):
         url = resolver(name)
