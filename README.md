@@ -1,8 +1,7 @@
 # WrestleDream
 
 **A daily wrestling performance showdown — pick who had the better week until one wrestler remains.**
-
-Mirrors the [NBA Showdown](https://github.com/Paristech1/NBAshowdown) loop: two performers face off, you pick a winner, the winner returns to the deck, and the last wrestler standing wins.
+ two performers face off, you pick a winner, the winner returns to the deck, and the last wrestler standing wins.
 
 ## How it works
 
